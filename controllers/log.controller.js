@@ -6,7 +6,7 @@ module.exports = {
     async create (req, res, next) {
         const entity = new Log(req.body);
 
-        if(verifyLog(entity)){
+        if(verifyLog(req.body)){
             await entity.save()
             .catch(next);
 
