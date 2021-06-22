@@ -29,7 +29,7 @@ function signAck(ack){
     const signature = sign.sign(ack + timestamp, CryptoJS.SHA256, "sha256");
 
     const ackWithSig = {
-        ack: ack,
+        message: ack,
         signature: signature,
         timestamp: timestamp
     };
