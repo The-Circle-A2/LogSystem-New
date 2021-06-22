@@ -12,6 +12,9 @@ const LogSchema = new Schema({
     time: {
         type: Date,
         default: Date.now,
+    },
+    signature: {
+        type: String
     }
 });
 
