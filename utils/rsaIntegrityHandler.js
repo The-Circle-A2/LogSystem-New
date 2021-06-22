@@ -1,6 +1,6 @@
 global.window = {};
 
-const JSEncrypt = require('JSEncrypt')
+const JSEncrypt = require('jsencrypt')
 const CryptoJS = require("crypto-js");
 
 function verifyLog(log){
