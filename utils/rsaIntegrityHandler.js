@@ -1,3 +1,5 @@
+global.window = {};
+
 const JSEncrypt = require('JSEncrypt/bin/jsencrypt');
 const CryptoJS = require("crypto-js");
 
@@ -8,11 +10,11 @@ function verifyLog(log){
     const verify = new JSEncrypt({default_key_size: 512});
     verify.setPublicKey(publicKey);
 
-    if(verify.verify(log.message + log.time, log.signature, CryptoJS.SHA256)) {
-        return resolve();
+    if(verify.verify(log.message + log.signature, CryptoJS.SHA256)) {
+        console.log("Verification OK");
     }
 
-    return reject();
+    console.log("Verification failure");
 
 }
 
@@ -22,13 +24,11 @@ function signAck(ack){
 
     const sign = new JSEncrypt();
     sign.setPrivateKey(privateKey);
-    const timestamp = Date.now();
-    const signature = sign.sign(ack + timestamp, CryptoJS.SHA256, "sha256");
+    const signature = sign.sign(ack, CryptoJS.SHA256, "sha256");
 
     const ackWithSig = {
         ack: ack,
         signature: signature,
-        timestamp: timestamp,
     };
 
     return ackWithSig;

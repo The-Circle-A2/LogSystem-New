@@ -1,4 +1,5 @@
 const Log = require('../models/log.model');
+const { verifyLog, signAck } = require('../utils/rsaIntegrityHandler');
 
 module.exports = {
 
