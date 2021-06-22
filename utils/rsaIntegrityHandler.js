@@ -1,11 +1,11 @@
 global.window = {};
 
-const JSEncrypt = require('JSEncrypt/bin/jsencrypt');
+const JSEncrypt = require('jsencrypt')
 const CryptoJS = require("crypto-js");
 
 function verifyLog(log){
 
-    const publicKey = process.env.PUBLIC_KEY; 
+    const publicKey = process.env.PUBLIC_KEY;
 
     const verify = new JSEncrypt({default_key_size: 512});
     verify.setPublicKey(publicKey);
@@ -21,7 +21,7 @@ function verifyLog(log){
 function signResponse(response){
 
     // TODO: change to private key of log server
-    const privateKey = process.env.SERVER_TEST_PK; 
+    const privateKey = process.env.SERVER_TEST_PK;
 
     const sign = new JSEncrypt();
 
