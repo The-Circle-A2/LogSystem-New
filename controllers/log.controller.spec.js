@@ -17,7 +17,6 @@ describe('log endpoints', function() {
             const res = await requester.post('/api/log').send(testLog);
 
             expect(res).to.have.status(201);
-            expect(res.body).to.have.property('_id');
     
             const inserted = await Log.findOne({message: testLog.message});
             expect(inserted).to.have.property('message', testLog.message);
