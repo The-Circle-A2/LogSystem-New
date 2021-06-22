@@ -10,28 +10,27 @@ function verifyLog(log){
     const verify = new JSEncrypt({default_key_size: 512});
     verify.setPublicKey(publicKey);
 
-    if(verify.verify(log.message + log.signature, CryptoJS.SHA256)) {
-        console.log("Verification OK");
+    if(verify.verify(log.message, log.signature, CryptoJS.SHA256)) {
+        return true;
+    } else {
+        return false;
     }
-
-    console.log("Verification failure");
 
 }
 
 function signAck(ack){
 
+    // TODO: change to private key of log server
     const privateKey = process.env.SERVER_TEST_PK; 
 
     const sign = new JSEncrypt();
-    const timestamp = Date.now();
 
     sign.setPrivateKey(privateKey);
-    const signature = sign.sign(ack + timestamp, CryptoJS.SHA256, "sha256");
+    const signature = sign.sign(ack, CryptoJS.SHA256, "sha256");
 
     const ackWithSig = {
         message: ack,
-        signature: signature,
-        timestamp: timestamp
+        signature: signature
     };
 
     return ackWithSig;
