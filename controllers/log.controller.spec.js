@@ -26,6 +26,52 @@ describe('log endpoints', function() {
 
         });
 
+        it('(POST /api/log) with invalid signature should return code 409', async function() {
+            const testLog = {
+                message: 'log message over http',
+                signature: 'invalid'
+            };
+
+            const res = await requester.post('/api/log').send(testLog);
+
+            expect(res).to.have.status(409);
+            expect(res.body).to.have.property('message');
+
+            const inserted = await Log.findOne({message: testLog.message});
+            expect(inserted).to.be.null;
+
+        });
+
+        it('(POST /api/log) without a signature should return code 409', async function() {
+            const testLog = {
+                message: 'log message over http'
+            };
+
+            const res = await requester.post('/api/log').send(testLog);
+
+            expect(res).to.have.status(409);
+            expect(res.body).to.have.property('message');
+
+            const inserted = await Log.findOne({message: testLog.message});
+            expect(inserted).to.be.null;
+
+        });
+
+        it('(POST /api/log) without a message should return code 409', async function() {
+            const testLog = {
+                userName: 'username'
+            };
+
+            const res = await requester.post('/api/log').send(testLog);
+
+            expect(res).to.have.status(409);
+            expect(res.body).to.have.property('message');
+
+            const inserted = await Log.findOne({userName: testLog.userName});
+            expect(inserted).to.be.null;
+
+        });
+
     });
 
 });
