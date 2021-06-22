@@ -10,7 +10,7 @@ function verifyLog(log){
     const verify = new JSEncrypt({default_key_size: 512});
     verify.setPublicKey(publicKey);
 
-    if(verify.verify(log.message, log.signature, CryptoJS.SHA256)) {
+    if(verify.verify(log.message + log.timestamp, log.signature, CryptoJS.SHA256)) {
         return true;
     } else {
         return false;
@@ -26,7 +26,7 @@ function signResponse(response){
     const sign = new JSEncrypt();
 
     sign.setPrivateKey(privateKey);
-    const signature = sign.sign(response, CryptoJS.SHA256, "sha256");
+    const signature = sign.sign(response.message + response.timestamp, CryptoJS.SHA256, "sha256");
 
     const responseWithSig = {
         message: response,

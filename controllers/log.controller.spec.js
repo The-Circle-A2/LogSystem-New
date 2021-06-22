@@ -11,7 +11,8 @@ describe('log endpoints', function() {
         it('(POST /api/log) with valid signature should create a log', async function() {
             const testLog = {
                 message: 'log message over http',
-                signature: 'P+tW7Nd4t4T9QogKdXrGpOEuiwHbu/Biu8WHYUNompemz6cwo5y3gJbY0ln/AJx5Muv9oyqfKAboD9pHZqtPc1HdmprWsdUjZQS4to0wMnRKBolBezQA5jRc/tMsOAgJL+ttWupnG9PmHJ8GRI+gENkWum2+Do/869yjbA+P2i5fGRCXYQjD6jvdsMd23DVzS0MUcvO9kj8paG6P5iFlvco6PhApJhg5KpLDTvaKBhYWeluxlbWpuszxSiQVN+xMEc13mm8pSxGxTaMa06LMSJx8Kbv1Rhbf9y60yj3zvmCtvhu9vkWi6YKeE8bGxHdNUrO4UDcXB36721jA0NoCGg'
+                timestamp: 'time',
+                signature: 'jhczV+XRAPBnTKnY4CfkQARejTPbRagYVO2YpLXjqK5x8hKyCxO16nIj2fJpAEAbcZjWj9Vzgbmy3Qiz3mwKFREq5r7I5KWZY/ZHzX8G74B2qyQCFgobcpIF5/cXjmK0BTKe1LA5WdK74b5AsqiiN0uXdtYBkW8B40bFMNTZbh1uPzxay5f7Ts5FUkno881WF4Dxf1Wu63R6P8WFotqbwMDMEPStWTPRq8nb3ngRlO9ipCc2AnHJlYZnG3wPMuqLjf40zUhSLrfKpCp2fq4wu+Zm0v/ecWHFXM5ZhSzMXohNg/th/3KofzO/UqIEAOVix8xoDfMtzZaxUKHGZdS/Jw'
             };
 
             const res = await requester.post('/api/log').send(testLog);
