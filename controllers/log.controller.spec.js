@@ -12,7 +12,7 @@ describe('log endpoints', function() {
             const testLog = {
                 message: 'log message over http',
                 timestamp: 'time',
-                signature: 'jhczV+XRAPBnTKnY4CfkQARejTPbRagYVO2YpLXjqK5x8hKyCxO16nIj2fJpAEAbcZjWj9Vzgbmy3Qiz3mwKFREq5r7I5KWZY/ZHzX8G74B2qyQCFgobcpIF5/cXjmK0BTKe1LA5WdK74b5AsqiiN0uXdtYBkW8B40bFMNTZbh1uPzxay5f7Ts5FUkno881WF4Dxf1Wu63R6P8WFotqbwMDMEPStWTPRq8nb3ngRlO9ipCc2AnHJlYZnG3wPMuqLjf40zUhSLrfKpCp2fq4wu+Zm0v/ecWHFXM5ZhSzMXohNg/th/3KofzO/UqIEAOVix8xoDfMtzZaxUKHGZdS/Jw'
+                signature: 'g51vYzuJesVckBBYkagcJ+KiWvaEf/5wnORpljq6hTzJv0x9kOJgQL1WmcPQC0zl8+1ZbR2REtjdTioKxxCbFTG4YP++hIim9DwnkxFdHR/fZif17zsFNIt540JNYzBkk5VpRz3wvKrd5gFHxNUT4Ha4o9DaohhCkhi4+uR4Q0Z+V6HK7HcPfLv2Wf9kGwK1i/QRRj7FDmJFNSSpxJRqEIRkY/CYXtpdJOczMzNp9J0baYdg0hUEUilrBImmDTTTfRmhsPzzlas2sG5w8M0vhY0LV0FduDK/WXq+nl+s+ZVkMP7Ox4BpLT9mWgsbXSMy0zmlNLMkshrKG/LMjsowYA'
             };
 
             const res = await requester.post('/api/log').send(testLog);
