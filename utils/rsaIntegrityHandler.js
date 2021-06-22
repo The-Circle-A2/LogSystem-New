@@ -16,25 +16,25 @@ function verifyLog(log){
 
 }
 
-function signLog(logMessage){
+function signAck(ack){
 
     const privateKey = process.env.PRIVATE_KEY; 
 
     const sign = new JSEncrypt();
     sign.setPrivateKey(privateKey);
     const timestamp = Date.now();
-    const signature = sign.sign(logMessage + timestamp, CryptoJS.SHA256, "sha256");
+    const signature = sign.sign(ack + timestamp, CryptoJS.SHA256, "sha256");
 
-    const logWithSig = {
-        log: logMessage,
+    const ackWithSig = {
+        ack: ack,
         signature: signature,
         timestamp: timestamp,
     };
 
-    return logWithSig;
+    return ackWithSig;
 }
 
 module.exports = {
     verifyLog,
-    signLog
+    signAck
 };
