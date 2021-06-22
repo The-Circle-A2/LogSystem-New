@@ -18,7 +18,7 @@ function verifyLog(log){
 
 }
 
-function signAck(ack){
+function signResponse(response){
 
     // TODO: change to private key of log server
     const privateKey = process.env.SERVER_TEST_PK; 
@@ -26,17 +26,17 @@ function signAck(ack){
     const sign = new JSEncrypt();
 
     sign.setPrivateKey(privateKey);
-    const signature = sign.sign(ack, CryptoJS.SHA256, "sha256");
+    const signature = sign.sign(response, CryptoJS.SHA256, "sha256");
 
-    const ackWithSig = {
-        message: ack,
+    const responseWithSig = {
+        message: response,
         signature: signature
     };
 
-    return ackWithSig;
+    return responseWithSig;
 }
 
 module.exports = {
     verifyLog,
-    signAck
+    signResponse
 };

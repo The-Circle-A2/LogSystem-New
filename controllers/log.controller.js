@@ -1,5 +1,5 @@
 const Log = require('../models/log.model');
-const { verifyLog, signAck } = require('../utils/rsaIntegrityHandler');
+const { verifyLog, signResponse } = require('../utils/rsaIntegrityHandler');
 
 module.exports = {
 
@@ -9,11 +9,13 @@ module.exports = {
         if(verifyLog(entity)){
             await entity.save()
             .catch(next);
-            res.status(201).json({_id: entity.id})
+
+            var response = signResponse("verification OK");
+            res.status(201).json(response);
+
         } else {
-            res.status(409).json({
-                "message": "verification failure"
-            })
+            var response = signResponse("verification failure");
+            res.status(409).json(response);
         }
     }
 
