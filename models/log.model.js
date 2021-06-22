@@ -6,13 +6,8 @@ const LogSchema = new Schema({
         type: String,
         required: [true, 'A log needs a message.']
     },
-    userId: {
-        type: String,
-        required: [true, 'A log needs a user ID.']
-    },
     userName: {
         type: String,
-        required: [true, 'A log needs a username']
     },
     time: {
         type: Date,

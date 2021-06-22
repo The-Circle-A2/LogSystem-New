@@ -11,9 +11,7 @@ describe('log endpoints', function() {
         it('(POST /api/log) should create a log', async function() {
             const testLog = {
                 message: 'Log message',
-                userId: 1,
                 userName: 'Username'
-
             };
 
             const res = await requester.post('/api/log').send(testLog);
@@ -24,6 +22,7 @@ describe('log endpoints', function() {
             const inserted = await Log.findOne({message: testLog.message});
             expect(inserted).to.have.property('message', testLog.message);
             expect(inserted).to.have.property('userName', testLog.userName);
+            expect(inserted).to.have.property('time');
 
         });
 
