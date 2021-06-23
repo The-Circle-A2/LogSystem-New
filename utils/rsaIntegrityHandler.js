@@ -21,7 +21,7 @@ function verifyLog(log){
 function signResponse(response){
 
     // TODO: change to private key of log server
-    const privateKey = process.env.SERVER_TEST_PK;
+    const privateKey = process.env.PRIVATE_KEY;
 
     const sign = new JSEncrypt();
 
