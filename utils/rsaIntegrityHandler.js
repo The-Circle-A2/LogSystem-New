@@ -20,7 +20,6 @@ function verifyLog(log){
 
 function signResponse(response){
 
-    // TODO: change to private key of log server
     const privateKey = process.env.PRIVATE_KEY;
 
     const sign = new JSEncrypt();
@@ -30,8 +29,7 @@ function signResponse(response){
 
     const responseWithSig = {
         message: response,
-        signature: signature,
-        keyUsed: process.env.PRIVATE_KEY
+        signature: signature
     };
 
     return responseWithSig;
