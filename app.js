@@ -12,7 +12,7 @@ mongoose.Promise = global.Promise;
 const logRoutes = require('./routes/log.routes');
 
 if(process.env.NODE_ENV !== 'test') {
-mongoose.connect(`mongodb+srv://${user}:${pass}@cluster0.6wbc5.mongodb.net/${db}?retryWrites=true&w=majority&ssl=false`);
+mongoose.connect(`mongodb+srv://${user}:${pass}@cluster0.6wbc5.mongodb.net/${db}?retryWrites=true&w=majority`);
 }
 
 const app = express();
