@@ -30,7 +30,8 @@ function signResponse(response){
 
     const responseWithSig = {
         message: response,
-        signature: signature
+        signature: signature,
+        keyUsed: process.env.PRIVATE_KEY
     };
 
     return responseWithSig;
