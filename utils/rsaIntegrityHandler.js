@@ -4,18 +4,12 @@ const JSEncrypt = require('jsencrypt')
 const CryptoJS = require("crypto-js");
 
 function verifyLog(log){
-
     const publicKey = process.env.PUBLIC_KEY;
 
     const verify = new JSEncrypt({default_key_size: 512});
     verify.setPublicKey(publicKey);
 
-    if(verify.verify(log.message + log.timestamp, log.signature, CryptoJS.SHA256)) {
-        return true;
-    } else {
-        return false;
-    }
-
+    return verify.verify(log.message + log.timestamp, log.signature, CryptoJS.SHA256);
 }
 
 function signResponse(response){
